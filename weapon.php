@@ -1,6 +1,6 @@
 <?php
 
-class weapons {
+class Weapon {
    private $_name;
    private $_damage;
 
@@ -15,10 +15,10 @@ private function setName($name){
 private function setDamage($damage){
     $this -> _damage = $damage;
 }
-public function getName($name){
+public function getName(){
     return $this -> _name;
 }
-public function getDamage($damage){
+public function getDamage(){
     return $this -> _damage;
 }
 }
