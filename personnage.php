@@ -46,14 +46,14 @@ class Personnage{
 
 
     public function showPersonnage(){
-        echo $this -> getName() . " a été créé<br>Il a " . $this -> getHealthPoint() . " hp et c'est un " . $this -> getGender();
+        echo $this -> getName() . " a été créé<br>Il a " . $this -> getHealthPoint() . " hp et c'est un " . $this -> getGender() . "<br>";
     }
 
     //getWeapon
     public function shootEnnemy(personnage $ennemy){
         
         $ennemy -> setHealthPoint($ennemy -> getHealthPoint() - $this -> getWeapon() -> getDamage());
-        echo $ennemy -> getName() . "à perdu de la vie, vie retante: " . $ennemy -> getHealthPoint();
+        echo $ennemy -> getName() . " à perdu de la vie, vie retante: " . $ennemy -> getHealthPoint() . "<br>";
     }
 
     
