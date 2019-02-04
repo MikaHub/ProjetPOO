@@ -15,5 +15,10 @@ private function setName($name){
 private function setDamage($damage){
     $this -> _damage = $damage;
 }
-
+public function getName($name){
+    return $this -> _name;
+}
+public function getDamage($damage){
+    return $this -> _damage;
+}
 }
