@@ -1,11 +1,11 @@
 <?php
 
-
 class Personnage{
     private $_name;
     private $_gender;
     private $_weapon;
     private $_health_point;
+    private $_equipement;
 
     public function __construct(string $name, string $gender, $health_point){
         $this->setName($name);
@@ -25,6 +25,9 @@ class Personnage{
     public function setWeapon($weapon){
         $this -> _weapon = $weapon;
     }
+    public function setEquipement($equipement){
+        $this -> _equipement = $equipement;
+    }
 
     //setWeapon
 
@@ -41,23 +44,32 @@ class Personnage{
     public function getWeapon(){
         return $this -> _weapon;
     }
+    public function getEquipement(){
+        return $this -> _equipement;
+    }
 
 
     public function showPersonnage(){
-        echo $this -> getName() . " a été créé<br>Il a " . $this -> getHealthPoint() . " hp et c'est un " . $this -> getGender() . "<br>";
+        echo $this-> getName() . " a été créé<br>Il a " . $this -> getHealthPoint() . " hp et c'est un " . $this -> getGender() . "<br>";
     }
 
     //getWeapon
     public function shootEnnemy(personnage $ennemy){
         $random = rand(0, 5);
-        $damageReal = ($this -> getWeapon() -> getDamage()) * $random;
-        $getWeapon = $this -> getWeapon();
+        /*if(perso possede point armure > O){
+            alors on fait (hp -= (attak - point armure)) (hp + armure) - attak
+        }else */
+
+
+
+
+        $damageReal = (($this-> getWeapon()-> getDamage()) * $random) - ($this -> getEquipement() -> getArmor());
+        $getWeapon = $this-> getWeapon();
 
         echo "dégats reels: " . $damageReal;
 
         
-        
-        $ennemy -> setHealthPoint($ennemy -> getHealthPoint() - $damageReal);
+        $ennemy -> setHealthPoint($ennemy-> getHealthPoint() - $damageReal);
         echo $ennemy -> getName() . " à perdu de la vie, vie restante: " . $ennemy -> getHealthPoint() . "<br>";
 
         //echo "capacité de l'arme: " . $this -> getWeapon() -> getCapacity() . "<br>";
@@ -68,12 +80,6 @@ class Personnage{
 
         echo "il reste " . $this -> getWeapon() -> getMunition() . "munitions<br>";
 
-
-
-        //echo $this -> getWeapon() -> setMunition(($this -> getWeapon() -> getMunition()) - $this -> getWeapon() -> getCapacity());
-        
-
-        
     }
 
     

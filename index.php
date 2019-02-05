@@ -11,8 +11,10 @@ $bazooka = new Weapon("bazooka", 5, 3, 1);
 $pistolet = new Weapon("pistolet", 3, 12, 6);
 $mickael = new Personnage("Micka" , "homme", 30);
 $melec = new Personnage("Melec" , "homme", 30);
-$kevlar = new equipement("kevlar" , 10, 5);
-$helmet = new equipement("helmet" , 5, 2);
+$kevlar = new Equipement("kevlar" , 10, 5);
+$helmet = new Equipement("helmet" , 5, 2);
+
+echo $bazooka -> getMunition();
 
 echo " Liste des armes : <br>" . $bazooka -> getName() . " qui inflige  :  " .  $bazooka -> getDamage() . " de dégats <br> " . $pistolet -> getName() . " qui inflige  :  " .  $pistolet -> getDamage() . " de dégats <br><br> ";
 
@@ -27,9 +29,10 @@ $melec -> showPersonnage();
 echo("<br>");
 $mickael -> setWeapon($bazooka);
 $melec -> setWeapon($pistolet);
-echo $mickael -> getWeapon() -> getName() . "<br><br>";
 
-echo $mickael -> getWeapon() -> getDamage();
+$mickael -> setEquipement($kevlar);
+$melec -> setEquipement($kevlar);
+//echo $mickael -> getWeapon() -> getDamage();
 
 //$mickael -> shootEnnemy($melec);
 $turn = 0;
