@@ -54,7 +54,7 @@ class Personnage{
         $random = rand(0, 5);
         $damageReal = ($this -> getWeapon() -> getDamage()) * $random;
         echo "test: " . $damageReal;
-        $ennemy -> setHealthPoint($ennemy -> getHealthPoint() - $this -> getWeapon() -> getDamage());
+        $ennemy -> setHealthPoint($ennemy -> getHealthPoint() - $damageReal);
         echo $ennemy -> getName() . " à perdu de la vie, vie restante: " . $ennemy -> getHealthPoint() . "<br>";
     }
 
