@@ -14,8 +14,6 @@ $melec = new Personnage("Melec" , "homme", 30);
 $kevlar = new equipement("kevlar" , 10, 5);
 $helmet = new equipement("helmet" , 5, 2);
 
-echo $bazooka -> getMunition();
-
 echo " Liste des armes : <br>" . $bazooka -> getName() . " qui inflige  :  " .  $bazooka -> getDamage() . " de dégats <br> " . $pistolet -> getName() . " qui inflige  :  " .  $pistolet -> getDamage() . " de dégats <br><br> ";
 
 echo " Joueurs : <br>" . $mickael -> getName() . "<br>" . $melec -> getName() . "<br><br>";
