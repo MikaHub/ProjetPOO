@@ -2,29 +2,25 @@
 
 require "personnage.php";
 require "weapon.php";
+require "equipement.php";
 
 //arsenal
 
 
 $bazooka = new Weapon("bazooka", 5, 3, 1);
 $pistolet = new Weapon("pistolet", 3, 12, 6);
+$mickael = new Personnage("Micka" , "homme", 30);
+$melec = new Personnage("Melec" , "homme", 30);
+$kevlar = new equipement("kevlar" , 10, 5);
+$helmet = new equipement("helmet" , 5, 2);
 
- 
-echo "Name: " . $pistolet -> getName() . " damage: " . $pistolet -> getDamage() . "<br>";
-
-echo $bazooka -> getName() . "<br>";
-
-echo $pistolet -> getName() . "<br>";
 echo $bazooka -> getMunition();
 
+echo " Liste des armes : <br>" . $bazooka -> getName() . " qui inflige  :  " .  $bazooka -> getDamage() . " de dégats <br> " . $pistolet -> getName() . " qui inflige  :  " .  $pistolet -> getDamage() . " de dégats <br><br> ";
 
-$mickael = new Personnage("micka" , "homme", 30);
+echo " Joueurs : <br>" . $mickael -> getName() . "<br>" . $melec -> getName() . "<br><br>";
 
-
-$melec = new Personnage("melec" , "homme", 30);
-
-//echo $mickael -> getName() . " a été créé<br>Il a " . $mickael -> getHealthPoint() . " hp et c'est un " . $mickael -> getGender();
-//echo $mickael -> getName() . " a été créé<br>Il a " . $mickael -> getHealthPoint() . " hp et c'est un " . $mickael -> getGender();
+echo " Création de personnage : <br>";
 
 $mickael -> showPersonnage();
 echo("<br>");

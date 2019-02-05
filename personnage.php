@@ -7,12 +7,10 @@ class Personnage{
     private $_weapon;
     private $_health_point;
 
-
     public function __construct(string $name, string $gender, $health_point){
         $this->setName($name);
         $this->setGender($gender);
         $this->setHealthPoint($health_point);
-
     }
 
     private function setName($name){
