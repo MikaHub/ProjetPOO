@@ -4,11 +4,13 @@ class Weapon {
    private $_name;
    private $_damage;
    private $_munition;
+   private $_capacity;
 
-public function __construct($name, $damage, $munition){
+public function __construct($name, $damage, $munition, $capacity){
     $this -> setName($name);
     $this -> setDamage($damage);
     $this -> setMunition($munition);
+    $this -> setCapacity($capacity);
 }
 
 private function setName($name){
@@ -17,8 +19,11 @@ private function setName($name){
 private function setDamage($damage){
     $this -> _damage = $damage;
 }
-private function setMunition($munition){
+public function setMunition($munition){
 	$this -> _munition = $munition;
+}
+private function setCapacity($capacity){
+	$this -> _capacity = $capacity;
 }
 
 public function getName(){
@@ -30,5 +35,7 @@ public function getDamage(){
 public function getMunition(){
 	return $this -> _munition;
 }
-
+public function getCapacity(){
+	return $this -> _capacity;
+}
 }

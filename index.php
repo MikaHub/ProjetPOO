@@ -6,10 +6,10 @@ require "weapon.php";
 //arsenal
 
 
-$bazooka = new Weapon("bazooka", 5, 3);
-$pistolet = new Weapon("pistolet", 3, 6);
+$bazooka = new Weapon("bazooka", 5, 3, 1);
+$pistolet = new Weapon("pistolet", 3, 12, 6);
 
-
+ 
 echo "Name: " . $pistolet -> getName() . " damage: " . $pistolet -> getDamage() . "<br>";
 
 echo $bazooka -> getName() . "<br>";
@@ -19,9 +19,6 @@ echo $bazooka -> getMunition();
 
 
 $mickael = new Personnage("micka" , "homme", 30);
-
-
-
 
 
 $melec = new Personnage("melec" , "homme", 30);
@@ -59,14 +56,3 @@ while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
     
 }
 
-
-$mickael -> setWeapon($bazooka) . "<br>";
-echo $mickael -> getWeapon() -> getName() . "<br>";
-
-$melec -> setWeapon($balle);
-echo $melec -> getWeapon() -> getName() . "<br>";
-
-//echo $mickael -> getWeapon() -> getDamage();
-
-$mickael -> shootEnnemy($melec) . "<br>";
-$melec -> shootEnnemy($mickael);

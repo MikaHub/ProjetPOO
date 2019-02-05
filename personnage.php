@@ -53,9 +53,25 @@ class Personnage{
     public function shootEnnemy(personnage $ennemy){
         $random = rand(0, 5);
         $damageReal = ($this -> getWeapon() -> getDamage()) * $random;
-        echo "test: " . $damageReal;
+        $getWeapon = $this -> getWeapon();
+
+        echo "dégats reels: " . $damageReal;
+
+        
+        
         $ennemy -> setHealthPoint($ennemy -> getHealthPoint() - $damageReal);
         echo $ennemy -> getName() . " à perdu de la vie, vie restante: " . $ennemy -> getHealthPoint() . "<br>";
+
+        //echo "capacité de l'arme: " . $this -> getWeapon() -> getCapacity() . "<br>";
+
+        echo "L'arme a " . $this -> getWeapon() -> getMunition() . "munitions<br>";
+
+        $this -> getWeapon() -> setMunition(($this -> getWeapon() -> getMunition()) - $this -> getWeapon() -> getCapacity());
+
+        echo "il reste " . $this -> getWeapon() -> getMunition() . "munitions<br>";
+        //echo $this -> getWeapon() -> setMunition(($this -> getWeapon() -> getMunition()) - $this -> getWeapon() -> getCapacity());
+
+        
     }
 
     
