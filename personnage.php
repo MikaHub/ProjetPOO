@@ -69,7 +69,11 @@ class Personnage{
         $this -> getWeapon() -> setMunition(($this -> getWeapon() -> getMunition()) - $this -> getWeapon() -> getCapacity());
 
         echo "il reste " . $this -> getWeapon() -> getMunition() . "munitions<br>";
+
+
+
         //echo $this -> getWeapon() -> setMunition(($this -> getWeapon() -> getMunition()) - $this -> getWeapon() -> getCapacity());
+        
 
         
     }

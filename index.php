@@ -41,18 +41,44 @@ echo $mickael -> getWeapon() -> getName() . "<br><br>";
 $turn = 0;
 
 
+// while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
+//     if($turn == 0){
+//         echo "Melec attaque <br>";
+//         $melec -> shootEnnemy($mickael);
+//         $turn = 1;
+//     }
+//     else{
+//         echo "micka attaque <br>";
+//         $mickael -> shootEnnemy($melec);
+//         $turn = 0;
+//     } 
+    
+// }
+
+
 while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
     if($turn == 0){
-        echo "Melec attaque <br>";
-        $melec -> shootEnnemy($mickael);
+        
+        if($melec->getWeapon() -> getMunition() <= 0){
+            echo "Melec n'a plus de balle et ne peut pas attaquer";
+        }
+        else{
+            echo "Melec tir avec: " . $melec -> getWeapon() -> getName() . "<br>";
+            $melec -> shootEnnemy($mickael);
+        }
+        
         $turn = 1;
     }
     else{
-        echo "micka attaque <br>";
-        $mickael -> shootEnnemy($melec);
-        $turn = 0;
-    }
-    
-    
-}
+        
+        if($mickael->getWeapon() -> getMunition() <= 0){
+            echo "Mika n'a plus de balle et ne peut pas attaquer";
+        }
+        else{
+            echo "micka attaque avec: " . $mickael -> getWeapon() -> getName() . "<br>";
+            $mickael -> shootEnnemy($melec);
+        }
 
+        $turn = 0;
+    }  
+}
