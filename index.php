@@ -29,7 +29,7 @@ $mickael -> setWeapon($bazooka);
 $melec -> setWeapon($pistolet);
 echo $mickael -> getWeapon() -> getName() . "<br><br>";
 
-//echo $mickael -> getWeapon() -> getDamage();
+echo $mickael -> getWeapon() -> getDamage();
 
 //$mickael -> shootEnnemy($melec);
 $turn = 0;
