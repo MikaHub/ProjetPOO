@@ -6,6 +6,7 @@ class Personnage{
     private $_weapon;
     private $_health_point;
     private $_equipement;
+    private $_ammo_stock;
 
     public function __construct(string $name, string $gender, $health_point){
         $this->setName($name);
@@ -28,6 +29,9 @@ class Personnage{
     public function setEquipement($equipement){
         $this -> _equipement = $equipement;
     }
+    public function setAmmoStock($ammoStock){
+        $this -> _ammo_stock = $ammoStock;
+    }
 
     //setWeapon
 
@@ -47,6 +51,9 @@ class Personnage{
     public function getEquipement(){
         return $this -> _equipement;
     }
+    public function getAmmoStock($arme){
+        return $this->_ammo_stock[$arme];
+    }
 
 
     public function showPersonnage(){
@@ -65,11 +72,13 @@ class Personnage{
 
         $damageReal = (($this-> getWeapon()-> getDamage()) * $random) - ($this -> getEquipement() -> getArmor());
         $getWeapon = $this-> getWeapon();
+        $damageReal = ($this -> getWeapon() -> getDamage()) * $random;
 
-        echo "dégats reels: " . $damageReal;
+        echo "dégats reels: " . $damageReal . "<br>";
 
         
         $ennemy -> setHealthPoint($ennemy-> getHealthPoint() - $damageReal);
+        $ennemy -> setHealthPoint($ennemy -> getHealthPoint() - $damageReal);
         echo $ennemy -> getName() . " à perdu de la vie, vie restante: " . $ennemy -> getHealthPoint() . "<br>";
 
         //echo "capacité de l'arme: " . $this -> getWeapon() -> getCapacity() . "<br>";
@@ -82,5 +91,7 @@ class Personnage{
 
     }
 
-    
+    public function reload (){
+
+    }
 }

@@ -1,5 +1,5 @@
 <?php
 
-class Terroriste {
+class Terroriste extends Personnage{
     
 }
