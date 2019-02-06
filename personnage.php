@@ -33,6 +33,10 @@ class Personnage{
         $this -> _ammo_stock = $ammoStock;
     }
 
+    public function reduceAmmoStock($weapon, $value){
+        $this -> _ammo_stock[$weapon] -= $value;
+    }
+
     //setWeapon
 
     public function getName(){
@@ -67,19 +71,28 @@ class Personnage{
             alors on fait (hp -= (attak - point armure)) (hp + armure) - attak
         }else */
 
+        $damageReal = (($this-> getWeapon()-> getDamage())*$random) ;
+        
+        $damageArmor = $damageReal - ($this -> getEquipement() -> getArmor());
 
-
-
-        $damageReal = (($this-> getWeapon()-> getDamage()) * $random) - ($this -> getEquipement() -> getArmor());
         $getWeapon = $this-> getWeapon();
-        $damageReal = ($this -> getWeapon() -> getDamage()) * $random;
+       
 
         echo "dégats reels: " . $damageReal . "<br>";
+        echo "armure: " . $this -> getEquipement() -> getArmor() . "<br>";
+        echo "dégats armor: " . $damageArmor . "<br>";
 
+        if($damageArmor < 0){
+            echo "L'amure fonctionne 0 dégats<br>";
+        }
+        else{
+            $ennemy -> setHealthPoint($ennemy-> getHealthPoint() - $damageReal);
+
+            echo $ennemy -> getName() . " à perdu de la vie, vie restante: " . $ennemy -> getHealthPoint() . "<br>";
+        }
+       // $ennemy -> setHealthPoint($ennemy-> getHealthPoint() - $damageReal);
         
-        $ennemy -> setHealthPoint($ennemy-> getHealthPoint() - $damageReal);
-        $ennemy -> setHealthPoint($ennemy -> getHealthPoint() - $damageReal);
-        echo $ennemy -> getName() . " à perdu de la vie, vie restante: " . $ennemy -> getHealthPoint() . "<br>";
+        
 
         //echo "capacité de l'arme: " . $this -> getWeapon() -> getCapacity() . "<br>";
 
@@ -91,7 +104,21 @@ class Personnage{
 
     }
 
-    public function reload (){
+    public function reload ($NB_chargeur){
+        echo "melec recharge de " . $NB_chargeur * $this -> getWeapon() -> getCapacity() . "<br>" ;
+        
+        $this -> getWeapon() -> setMunition($this -> getWeapon() -> getCapacity());
+        
+        echo "melec" . $this -> getWeapon() -> getMunition() . " <br> ";
+        
+        echo "ammostock" . $this -> getAmmoStock($this -> getWeapon() -> getName()) . "<br>";
 
+        $this -> reduceAmmoStock('pistolet', 1);
+        
+        echo "<br>vardumpt: " . $this -> _ammo_stock['pistolet'] . " fin<br>";
+    
+        echo "ammostock apres rechargement" . $this -> getAmmoStock($this -> getWeapon() -> getName()) . "<br>";
+
+        echo "munition dans l'arme " . $this -> getWeapon() -> getMunition() . "<br>";
     }
 }

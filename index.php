@@ -7,10 +7,10 @@ require "equipement.php";
 //arsenal
 
 
-$bazooka = new Weapon("bazooka", 5, 3, 1);
-$pistolet = new Weapon("pistolet", 3, 12, 6);
-$mickael = new Personnage("Micka" , "homme", 30);
-$melec = new Personnage("Melec" , "homme", 30);
+$bazooka = new Weapon("bazooka", 5, 2, 1);
+$pistolet = new Weapon("pistolet", 3, 6, 6);
+$mickael = new Personnage("Micka" , "homme", 40);
+$melec = new Personnage("Melec" , "homme", 40);
 $kevlar = new Equipement("kevlar" , 10, 5);
 $helmet = new Equipement("helmet" , 5, 2);
 
@@ -53,14 +53,15 @@ $turn = 0;
 
 while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
     if($turn == 0){
-        
+       
         if($melec->getWeapon() -> getMunition() <= 0){
             echo "Melec n'a plus de balle et ne peut pas attaquer";
-            if($melec -> getAmmoStock($melec -> getWeapon() -> getName() > 0)){
-                //$melec -> reload();
-                echo "melec à rechargé";
+            if($melec -> getAmmoStock($melec -> getWeapon() -> getName()) > 0){
+                $melec -> reload(1);
+                
             }
             else{
+                
                 echo "Changer d'arme";
             }
         }
@@ -68,18 +69,20 @@ while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
             echo "Melec tir avec: " . $melec -> getWeapon() -> getName() . "<br>";
             $melec -> shootEnnemy($mickael);
         }
-        
+    
         $turn = 1;
     }
     else{
-        
+        echo "munition mika: " . $melec -> getAmmoStock($melec -> getWeapon() -> getName());
         if($mickael->getWeapon() -> getMunition() <= 0){
             if($mickael-> getAmmoStock($mickael-> getWeapon() -> getName() > 0)){
-                //$mickael -> reload();
+                $mickael -> reload(1);
                 echo "Mika à rechargé";
+                break;
             }
             else{
             echo "Mika n'a plus de balle et ne peut pas attaquer";
+                break;
             }
         }
         else{
