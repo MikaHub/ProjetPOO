@@ -40,13 +40,15 @@ $mickael-> setAmmoStock(['bazooka' => 10]);
 $turn = 0;
 $message_de_fin = "fin de jeu";
 $defaultTimer = 6;
-$tnt = new Bomb();
+$tnt = $mickael -> triggerBomb();
+echo "Mika a posé la bombe <br>";
 $tnt -> setTimer($defaultTimer);
+echo "La bombe explose dans" . $defaultTimer . "<br>";
 
 while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
     if($turn == 0){
         //ANTITERRO
-        echo "la bombe explose dans " . $tnt -> getTimer() . "<br>";
+        
        //TRY DEFUSE
         echo "antiterro essaye de desamorcer<br>";
         $melec -> tryDefuseBomb($tnt , $defaultTimer);
