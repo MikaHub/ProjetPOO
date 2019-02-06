@@ -66,41 +66,45 @@ class Personnage{
 
     //getWeapon
     public function shootEnnemy(personnage $ennemy){
-        $random = rand(0, 5);
-        /*if(perso possede point armure > O){
-            alors on fait (hp -= (attak - point armure)) (hp + armure) - attak
-        }else */
-
-        $damageReal = (($this-> getWeapon()-> getDamage())*$random) ;
+        
+        $damageReal = 0;
+        for ( $i = 1; $i <= $this -> getWeapon() -> getCapacity(); $i ++){
+            $random = rand(0, 5);
+            $damageReal += (($this-> getWeapon()-> getDamage())*$random) ;
+            echo " dégat balle n°" . $i . ": " . $damageReal . "<br>";
+        }
+        //$damageReal = (($this-> getWeapon()-> getDamage())*$random) ;
         
         $damageArmor = $damageReal - ($this -> getEquipement() -> getArmor());
 
         $getWeapon = $this-> getWeapon();
        
+        $message_de_fin = "fin de partie";
 
         echo "dégats reels: " . $damageReal . "<br>";
         echo "armure: " . $this -> getEquipement() -> getArmor() . "<br>";
         echo "dégats armor: " . $damageArmor . "<br>";
 
+        $this -> getWeapon() -> setMunition(($this -> getWeapon() -> getMunition()) - $this -> getWeapon() -> getCapacity());
+
+        echo "il reste " . $this -> getWeapon() -> getMunition() . "munitions<br>";
+
         if($damageArmor < 0){
             echo "L'amure fonctionne 0 dégats<br>";
         }
         else{
-            $ennemy -> setHealthPoint($ennemy-> getHealthPoint() - $damageReal);
+            $ennemy -> setHealthPoint($ennemy-> getHealthPoint() - $damageArmor);
 
-            echo $ennemy -> getName() . " à perdu de la vie, vie restante: " . $ennemy -> getHealthPoint() . "<br>";
+            if($ennemy -> getHealthPoint() <= 0){
+                echo $ennemy -> getName() . " est mort <br>" . "<br>" . $message_de_fin . " " . $this -> getName() . " à gagné!";
+            }
+            else{
+                echo $ennemy -> getName() . " à perdu de la vie, vie restante: " . $ennemy -> getHealthPoint() . "<br>";
+            }
+           
         }
-       // $ennemy -> setHealthPoint($ennemy-> getHealthPoint() - $damageReal);
+       
         
-        
-
-        //echo "capacité de l'arme: " . $this -> getWeapon() -> getCapacity() . "<br>";
-
-        echo "L'arme a " . $this -> getWeapon() -> getMunition() . "munitions<br>";
-
-        $this -> getWeapon() -> setMunition(($this -> getWeapon() -> getMunition()) - $this -> getWeapon() -> getCapacity());
-
-        echo "il reste " . $this -> getWeapon() -> getMunition() . "munitions<br>";
 
     }
 
@@ -109,13 +113,13 @@ class Personnage{
         
         $this -> getWeapon() -> setMunition($this -> getWeapon() -> getCapacity());
         
-        echo "melec" . $this -> getWeapon() -> getMunition() . " <br> ";
+        echo $this -> getName() . " à " . $this -> getWeapon() -> getMunition() . " balles dans son chargeur de " . $this -> getWeapon() -> getName() . "<br>";
         
         echo "ammostock" . $this -> getAmmoStock($this -> getWeapon() -> getName()) . "<br>";
 
-        $this -> reduceAmmoStock('pistolet', 1);
+        $this -> reduceAmmoStock($this -> getWeapon() -> getName(), 1);
         
-        echo "<br>vardumpt: " . $this -> _ammo_stock['pistolet'] . " fin<br>";
+        echo $this -> getName() . " à " . $this -> _ammo_stock[$this -> getWeapon() -> getName()] . " chargeurs dans son Stock<br>";
     
         echo "ammostock apres rechargement" . $this -> getAmmoStock($this -> getWeapon() -> getName()) . "<br>";
 
