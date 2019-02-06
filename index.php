@@ -3,14 +3,17 @@
 require "personnage.php";
 require "weapon.php";
 require "equipement.php";
+require "terroriste.php";
+require "antiterro.php";
+require "bomb.php";
 
-//arsenal
+//arsenal nil nlul nul les commentaires !!!@@@@@@@@@@@@@@@@@@@@@@@@
 
 
-$bazooka = new Weapon("bazooka", 100, 10, 1);
-$pistolet = new Weapon("pistolet", 2, 67, 15);
-$mickael = new Personnage("Micka" , "homme", 60);
-$melec = new Personnage("Melec" , "homme", 100);
+$bazooka = new Weapon("bazooka", 10, 10, 1);
+$pistolet = new Weapon("pistolet", 2, 67, 5);
+$mickael = new Terroriste("Micka" , "homme", 60);
+$melec = new Antiterro("Melec" , "homme", 100);
 $kevlar = new Equipement("kevlar" , 5, 5);
 $helmet = new Equipement("helmet" , 5, 2);
 
@@ -35,11 +38,15 @@ $melec -> setAmmoStock(['pistolet' => 16]);
 $mickael-> setAmmoStock(['bazooka' => 10]);
 //$mickael -> shootEnnemy($melec);
 $turn = 0;
-$message_de_fin = "eff";
+$message_de_fin = "fin de jeu";
 
+$tnt = new Bomb();
+$tnt -> setTimer(3);
 
 while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
     if($turn == 0){
+
+        echo "la bombe explose dans " . $tnt -> getTimer() . "<br>";
        
         if($melec->getWeapon() -> getMunition() <= 0){
             echo "Melec n'a plus de balle et ne peut pas attaquer";
@@ -50,7 +57,7 @@ while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
             else{
                 
                 echo "melec n'a plus de balle et ne peut pas attaquer <br>";
-                echo "plus de ballein de jeu";
+                echo "plus de balle fin de jeu";
                 break;
             }
         }
@@ -86,5 +93,16 @@ while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
         }
 
         $turn = 0;
-    }  
+                
+        $tnt -> tictactictac();
+        if($tnt -> getTimer() == 0){
+            echo $message_de_fin;
+            break;
+        }
+        //if bombetour = vie bombetour{
+           // echo "La bombe a explosé -, le policier est mort."
+            //break;
+        }
+
+
 }
