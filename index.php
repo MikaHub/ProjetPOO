@@ -39,15 +39,18 @@ $mickael-> setAmmoStock(['bazooka' => 10]);
 //$mickael -> shootEnnemy($melec);
 $turn = 0;
 $message_de_fin = "fin de jeu";
-
+$defaultTimer = 6;
 $tnt = new Bomb();
-$tnt -> setTimer(3);
+$tnt -> setTimer($defaultTimer);
 
 while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
     if($turn == 0){
-
+        //ANTITERRO
         echo "la bombe explose dans " . $tnt -> getTimer() . "<br>";
-       
+       //TRY DEFUSE
+        echo "antiterro essaye de desamorcer<br>";
+        $melec -> tryDefuseBomb($tnt , $defaultTimer);
+
         if($melec->getWeapon() -> getMunition() <= 0){
             echo "Melec n'a plus de balle et ne peut pas attaquer";
             if($melec -> getAmmoStock($melec -> getWeapon() -> getName()) > 0){
@@ -72,7 +75,6 @@ while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
         $turn = 1;
     }
     else{
-        
         if($mickael->getWeapon() -> getMunition() <= 0){
             if($mickael-> getAmmoStock($mickael-> getWeapon() -> getName()) > 0){
                 $mickael -> reload(1);
