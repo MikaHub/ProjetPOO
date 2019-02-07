@@ -21,6 +21,11 @@ $micaHp = $mickael -> getHealthPoint();
 $melecName = $melec -> getName();
 $melecHp = $melec -> getHealthPoint();
 
+$bazooka = new Weapon("bazooka", 10, 10, 1);
+$pistolet = new Weapon("pistolet", 2, 67, 5);
+
+
+
 ?>
 
 
@@ -35,12 +40,12 @@ $melecHp = $melec -> getHealthPoint();
 <body>
     <div class= "flex">
         <div>
-            <button onclick="createTerrorist()" id="button">Creation du terroriste micael</button>
+            <button onclick="createTerrorist()" id="buttonTerro">Creation du terroriste micael</button>
             <div id="terro">En attente du terroriste</div>
         </div>
 
         <div>
-            <button onclick="createAntiTerrorist()" id="button">Creation du terroriste micael</button>
+            <button onclick="createAntiTerrorist()" id="buttonAnti">Creation de l' antiterroriste melec</button>
             <div id="antiterro">En attente de l'antiterroriste</div>
         </div>
     </div>
@@ -48,7 +53,6 @@ $melecHp = $melec -> getHealthPoint();
     
 </body>
 <script>
-    console.log("hbjnj");
     let micaHp = <?php echo $micaHp ?>;
     var micaName = "<?php echo $micaName ?>"
 
@@ -60,9 +64,6 @@ $melecHp = $melec -> getHealthPoint();
     }
     function createTerrorist(){
         document.getElementById("terro").innerHTML = micaName + " le terroriste à " + micaHp + " hp" ;
-        
-
-        console.log("hbjnj");
     } 
 //document.getElementById("button").addEventListener("click", afterClick());
 </script>
