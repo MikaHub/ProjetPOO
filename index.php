@@ -103,7 +103,7 @@ $melecEquipement = $melec -> getEquipement() -> getName();
     }
 
        function setEquipementAnti(){
-        document.getElementById("setEquipementAnti").innerHTML = "Vous avez un helmet";
+        document.getElementById("setEquipementAnti").innerHTML = "Vous avez un casque";
     }
 
 </script>
