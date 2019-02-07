@@ -1,8 +1,8 @@
 <?php 
 
-class Terroriste extends Personnage{
+final class Terroriste extends Personnage{
 	public function triggerBomb(){
-		$tnt = new Bomb();
-		return $tnt;
+		$bomb = new Bomb();
+		return $bomb;
 	}
 }

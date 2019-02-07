@@ -1,6 +1,6 @@
 <?php
 
-class Personnage{
+abstract class Personnage{
     private $_name;
     private $_gender;
     private $_weapon;

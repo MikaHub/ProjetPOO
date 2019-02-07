@@ -1,0 +1,6 @@
+
+.flex{
+	display: flex;
+	border: solid 5px;
+	border-color: red;
+}
