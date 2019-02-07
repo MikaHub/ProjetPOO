@@ -1,6 +1,61 @@
 
 .flex{
 	display: flex;
-	border: solid 5px;
-	border-color: red;
+
+}
+
+#buttonTerro{
+	border-radius: 11px;
+    width: 11rem;
+    height: 3rem;
+    background: black;
+	color: white;
+	outline:none;
+	cursor: pointer;
+	font-size: 17px;
+}
+#buttonAnti{
+	border-radius: 11px;
+    width: 12rem;
+    height: 3rem;
+    background: white;
+	color: black;
+	outline:none;
+	cursor: pointer;
+	font-size: 19px;
+	border: 1px solid black;
+}
+
+.divTerro{
+	text-align: center;
+	margin-left: 27rem;
+	position: relative;
+}
+.divAnti{
+	margin-left: 9rem;
+	text-align: center;
+	position: relative;
+}
+#setWeaponTerro{
+	border-radius: 11px;
+    background-color: black;
+    color: white;
+    width: 11rem;
+    height: 3rem;
+    font-size: 18px;
+	margin-top: 1rem;
+	cursor: pointer;
+	justify-content: center;
+}
+#setWeaponAntiTerro{
+	border-radius: 11px;
+    background-color: white;
+    color: black;
+    width: 12rem;
+    height: 3rem;
+    font-size: 18px;
+	margin-top: 1rem;
+	border: 1px solid black;
+	cursor: pointer;
+	justify-content: center;
 }
