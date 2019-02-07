@@ -24,7 +24,8 @@ $melecHp = $melec -> getHealthPoint();
 $bazooka = new Weapon("bazooka", 10, 10, 1);
 $pistolet = new Weapon("pistolet", 2, 67, 5);
 
-
+$mickael -> setWeapon($bazooka);
+$melec -> setWeapon($pistolet);
 
 ?>
 
@@ -42,11 +43,13 @@ $pistolet = new Weapon("pistolet", 2, 67, 5);
         <div>
             <button onclick="createTerrorist()" id="buttonTerro">Creation du terroriste micael</button>
             <div id="terro">En attente du terroriste</div>
+            <div onclick="setWeaponTerro()" id="setWeaponTerro">En attente de création du terroriste</div>
         </div>
 
         <div>
-            <button onclick="createAntiTerrorist()" id="buttonAnti">Creation de l' antiterroriste melec</button>
+            <button onclick="createAntiTerrorist()" id="buttonAnti">Creation de l'antiterroriste melec</button>
             <div id="antiterro">En attente de l'antiterroriste</div>
+            <div onclick="setWeaponAnti()" id="setWeaponAntiTerro">En attente de création de l'antiterroriste</div>
         </div>
     </div>
     
@@ -56,15 +59,29 @@ $pistolet = new Weapon("pistolet", 2, 67, 5);
     let micaHp = <?php echo $micaHp ?>;
     var micaName = "<?php echo $micaName ?>"
 
+  
+
     let melecHp = <?php echo $melecHp ?>;
     let melecName = "<?php echo $melecName ?>"
 
+    
+
     function createAntiTerrorist(){
+        
         document.getElementById("antiterro").innerHTML = melecName + " l' antiterroriste à " + melecHp + " hp" ;
+        document.getElementById("setWeaponAntiTerro").innerHTML = "Choix de l'arme" ;
     }
     function createTerrorist(){
         document.getElementById("terro").innerHTML = micaName + " le terroriste à " + micaHp + " hp" ;
+        document.getElementById("setWeaponTerro").innerHTML = "Choix de l'arme" ;
+
     } 
+    function setWeaponAnti(){
+        document.getElementById("setWeaponAntiTerro").innerHTML = "Vous avez un Pistolet";
+    }
+    function setWeaponTerro(){
+        document.getElementById("setWeaponTerro").innerHTML = "Vous avez un Bazooka";
+    }
 //document.getElementById("button").addEventListener("click", afterClick());
 </script>
 </html>
