@@ -35,9 +35,17 @@ $mickael -> setEquipement($kevlar);
 $melec -> setEquipement($helmet);
 
 $micaEquipement = $mickael -> getEquipement() -> getName();
-
 $melecEquipement = $melec -> getEquipement() -> getName();
 
+$melec -> setAmmoStock(['pistolet' => 16]);
+$mickael-> setAmmoStock(['bazooka' => 10]);
+
+$turn = 0;
+$message_de_fin = "fin de jeu";
+$defaultTimer = 6;
+$tnt = $mickael -> triggerBomb();
+
+$tnt -> setTimer($defaultTimer);
 
 
 
@@ -65,17 +73,88 @@ $melecEquipement = $melec -> getEquipement() -> getName();
             <div onclick="setEquipementAnti()" id=setEquipementAnti></div>
         </div>
     </div>
-    
-    
+    <button onclick="beginGame()">Commencer la partie</button> 
+    <div style="display: none;"id="jeu">
+        
+        <?php 
+        echo "Mika a posé la bombe !<br>";
+        echo "La bombe explose dans " . $defaultTimer . " eminutes<br><br>";
+        while(($melec -> getHealthPoint() > 0 ) && ($mickael -> getHealthPoint() > 0 )){
+            if($turn == 0){
+                //ANTITERRO
+                
+               //TRY DEFUSE
+                $melec -> tryDefuseBomb($tnt , $defaultTimer);
+
+                if($melec->getWeapon() -> getMunition() <= 0){
+                    echo "Melec n'a plus de balle et ne peut pas attaquer";
+                    if($melec -> getAmmoStock($melec -> getWeapon() -> getName()) > 0){
+                        $melec -> reload(1);
+                        echo "Melec à recharger<br>";
+                    }
+                    else{
+                        
+                        echo "Melec n'a plus de balle et ne peut pas attaquer <br>";
+                        echo "plus de balle fin de jeu";
+                        break;
+                    }
+                }
+                else{
+                    echo "Melec tir avec: " . $melec -> getWeapon() -> getName() . "<br>";
+                    $melec -> shootEnnemy($mickael);
+                    if($message_de_fin == "fin de partie"){
+                        echo $message_de_fin;
+                        break;
+                    }
+                }
+                $turn = 1;
+                echo "<br>";
+            }
+                else{
+                    if($mickael->getWeapon() -> getMunition() <= 0){
+                        if($mickael-> getAmmoStock($mickael-> getWeapon() -> getName()) > 0){
+                            $mickael -> reload(1);
+                            echo "Mika à rechargé";
+                            
+                        }
+                        else{
+                        echo "mika n'a plus de balle et ne peut pas attaquer<br>";
+                        echo 'plus de balle fin de jeu';
+                        break;
+
+                            
+                        }
+                    }
+                    else{
+                        echo "Micka attaque avec: " . $mickael -> getWeapon() -> getName() . "<br>";
+                        $mickael -> shootEnnemy($melec);
+                    }
+
+                    $turn = 0;
+                    
+                    echo "<br>";
+                    $tnt -> tictactictac();
+                    if($tnt -> getTimer() == 0){
+                        echo $message_de_fin;
+                        break;
+                    }
+                }
+                echo "<br><br>";
+
+        }
+    ?>
+    </div>
+
 </body>
 <script>
     let micaHp = <?php echo $micaHp ?>;
     var micaName = "<?php echo $micaName ?>"
 
-  
+    
 
     let melecHp = <?php echo $melecHp ?>;
     let melecName = "<?php echo $melecName ?>"
+
 
     
 
@@ -91,11 +170,11 @@ $melecEquipement = $melec -> getEquipement() -> getName();
     } 
     function setWeaponAnti(){
         document.getElementById("setWeaponAntiTerro").innerHTML = "Vous avez un Pistolet";
-        document.getElementById("setEquipementAnti").innerHTML = "Prenez votre équipement"
+        document.getElementById("setEquipementAnti").innerHTML = "Prenez votre équipement";
     }
     function setWeaponTerro(){
         document.getElementById("setWeaponTerro").innerHTML = "Vous avez un Bazooka";
-        document.getElementById("setEquipementTerro").innerHTML = "Prenez votre équipement"
+        document.getElementById("setEquipementTerro").innerHTML = "Prenez votre équipement";
     }
 
     function setEquipementTerro(){
@@ -106,7 +185,12 @@ $melecEquipement = $melec -> getEquipement() -> getName();
         document.getElementById("setEquipementAnti").innerHTML = "Vous avez un casque";
     }
 
+    function beginGame(){
+        document.getElementById("jeu").style.display="inline"
+    }
+    
 </script>
+
 </html>
 
 
