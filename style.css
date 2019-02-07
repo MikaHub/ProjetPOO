@@ -45,7 +45,6 @@
     font-size: 18px;
 	margin-top: 1rem;
 	cursor: pointer;
-	justify-content: center;
 }
 #setWeaponAntiTerro{
 	border-radius: 11px;
@@ -57,5 +56,5 @@
 	margin-top: 1rem;
 	border: 1px solid black;
 	cursor: pointer;
-	justify-content: center;
+
 }

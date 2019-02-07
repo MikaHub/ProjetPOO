@@ -18,6 +18,7 @@ $melec = new Antiterro("Melec" , "homme", 100);
 $micaName = $mickael -> getName();
 $micaHp = $mickael -> getHealthPoint();
 
+
 $melecName = $melec -> getName();
 $melecHp = $melec -> getHealthPoint();
 
@@ -27,10 +28,20 @@ $pistolet = new Weapon("pistolet", 2, 67, 5);
 $mickael -> setWeapon($bazooka);
 $melec -> setWeapon($pistolet);
 
-?>
+$kevlar = new Equipement("kevlar" , 5, 5);
+$helmet = new Equipement("helmet" , 5, 2);
+
+$mickael -> setEquipement($kevlar);
+$melec -> setEquipement($helmet);
+
+$micaEquipement = $mickael -> getEquipement() -> getName();
+
+$melecEquipement = $melec -> getEquipement() -> getName();
 
 
-    
+
+
+?>   
 
 <!DOCTYPE html>
 <html>
@@ -40,16 +51,18 @@ $melec -> setWeapon($pistolet);
 </head>
 <body>
     <div class= "flex">
-        <div>
+        <div class="divTerro">
             <button onclick="createTerrorist()" id="buttonTerro">Creation du terroriste micael</button>
             <div id="terro">En attente du terroriste</div>
             <div onclick="setWeaponTerro()" id="setWeaponTerro">En attente de création du terroriste</div>
+            <div onclick="setEquipementTerro()" id=setEquipementTerro></div>
         </div>
-
-        <div>
+                                                                                                                         
+        <div class="divAnti">
             <button onclick="createAntiTerrorist()" id="buttonAnti">Creation de l'antiterroriste melec</button>
             <div id="antiterro">En attente de l'antiterroriste</div>
             <div onclick="setWeaponAnti()" id="setWeaponAntiTerro">En attente de création de l'antiterroriste</div>
+            <div onclick="setEquipementAnti()" id=setEquipementAnti></div>
         </div>
     </div>
     
@@ -78,11 +91,21 @@ $melec -> setWeapon($pistolet);
     } 
     function setWeaponAnti(){
         document.getElementById("setWeaponAntiTerro").innerHTML = "Vous avez un Pistolet";
+        document.getElementById("setEquipementAnti").innerHTML = "Prenez votre équipement"
     }
     function setWeaponTerro(){
         document.getElementById("setWeaponTerro").innerHTML = "Vous avez un Bazooka";
+        document.getElementById("setEquipementTerro").innerHTML = "Prenez votre équipement"
     }
-//document.getElementById("button").addEventListener("click", afterClick());
+
+    function setEquipementTerro(){
+        document.getElementById("setEquipementTerro").innerHTML = "Vous avez un gilet en kevlar";
+    }
+
+       function setEquipementAnti(){
+        document.getElementById("setEquipementAnti").innerHTML = "Vous avez un helmet";
+    }
+
 </script>
 </html>
 
