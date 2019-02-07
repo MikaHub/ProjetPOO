@@ -18,6 +18,8 @@ $melec = new Antiterro("Melec" , "homme", 100);
 $micaName = $mickael -> getName();
 $micaHp = $mickael -> getHealthPoint();
 
+$melecName = $melec -> getName();
+$melecHp = $melec -> getHealthPoint();
 
 ?>
 
@@ -38,7 +40,7 @@ $micaHp = $mickael -> getHealthPoint();
         </div>
 
         <div>
-            <button onclick="createTerrorist()" id="button">Creation du terroriste micael</button>
+            <button onclick="createAntiTerrorist()" id="button">Creation du terroriste micael</button>
             <div id="antiterro">En attente de l'antiterroriste</div>
         </div>
     </div>
@@ -50,6 +52,12 @@ $micaHp = $mickael -> getHealthPoint();
     let micaHp = <?php echo $micaHp ?>;
     var micaName = "<?php echo $micaName ?>"
 
+    let melecHp = <?php echo $melecHp ?>;
+    let melecName = "<?php echo $melecName ?>"
+
+    function createAntiTerrorist(){
+        document.getElementById("antiterro").innerHTML = melecName + " l' antiterroriste à " + melecHp + " hp" ;
+    }
     function createTerrorist(){
         document.getElementById("terro").innerHTML = micaName + " le terroriste à " + micaHp + " hp" ;
         
